@@ -1,0 +1,9 @@
+[package]
+name = "stage3-tracing-event"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+tokio.workspace = true
+tracing.workspace = true
+tracing-subscriber.workspace = true

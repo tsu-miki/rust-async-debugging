@@ -1,0 +1,22 @@
+[workspace]
+resolver = "2"
+members = [
+    "stage0-nothing",
+    "stage1-println",
+    "stage2-log",
+    "stage3-tracing-event",
+    "stage4-tracing-span",
+    "stage5-instrument",
+    "stage6-env-filter",
+    "stage7-tokio-console",
+]
+
+# 各 stage が共有するバージョンを一箇所で管理する。
+# 各 stage の Cargo.toml では `tracing.workspace = true` のように参照する。
+[workspace.dependencies]
+tokio = { version = "1", features = ["rt-multi-thread", "macros", "time"] }
+log = "0.4"
+env_logger = "0.11"
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+console-subscriber = "0.4"

@@ -1,0 +1,11 @@
+[package]
+name = "stage7-tokio-console"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+# tokio-console はランタイム本体のタスク計装を使うので、
+# tokio に "tracing" feature が必要。加えて Ctrl-C 用に "signal" も足す。
+# （ワークスペース既定の feature に、この 2 つを追加でマージしている）
+tokio = { workspace = true, features = ["tracing", "signal"] }
+console-subscriber.workspace = true

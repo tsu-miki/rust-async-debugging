@@ -1,0 +1,11 @@
+# tokio-console (stage7) は tokio 本体のタスク計装を使う。
+# これは `--cfg tokio_unstable` を付けてビルドしないと有効にならないため、
+# ワークスペース全体にこのフラグを付けている。
+#
+# stage0〜stage6 にとってこのフラグは無害(未使用の cfg が増えるだけ)なので、
+# 「stage7 のためだけに毎回環境変数を設定する」手間を省くためにここに置いている。
+#
+# 本物のプロジェクトで tokio-console を使うときも、この設定を .cargo/config.toml に
+# 書いておくのが定番。あるいは `RUSTFLAGS="--cfg tokio_unstable" cargo run` でもよい。
+[build]
+rustflags = ["--cfg", "tokio_unstable"]
